@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Калькулятор бюджета · Бюджет по полочкам</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="logo" href="index.html"><span class="logo-mark">с</span>Бюджет по полочкам</a>
+  <nav class="nav" aria-label="Разделы сайта"><a href="index.html">Главная</a><a href="shagi.html">С чего начать</a><a href="metody.html">Методы</a><a href="sovety.html">Советы</a><a href="kalkulyator.html" aria-current="page">Калькулятор</a></nav>
+</div></header>
+<main><div class="wrap">
+<section class="page-head">
+  <p class="eyebrow">Раздел 4</p>
+  <h1>Калькулятор бюджета</h1>
+  <p class="lead">Введите свой доход, и калькулятор покажет, как его распределить. Ниже можно проверить реальные расходы.</p>
+</section>
+
+<section class="section">
+  <div class="calc" id="split-calc">
+    <h2>Как распределить доход</h2>
+    <div class="field">
+      <label for="income">Доход в месяц, сом</label>
+      <div class="input-money"><input type="number" id="income" min="0" step="500" value="100000" inputmode="numeric"></div>
+    </div>
+    <div class="field">
+      <span class="label" id="rule-label">Правило распределения</span>
+      <div class="seg" role="group" aria-labelledby="rule-label">
+        <button type="button" id="rule-50" data-rule="50,30,20" aria-pressed="true">50 / 30 / 20</button>
+        <button type="button" id="rule-70" data-rule="70,20,10" aria-pressed="false">70 / 20 / 10</button>
+        <button type="button" id="rule-60" data-rule="60,20,20" aria-pressed="false">60 / 20 / 20</button>
+      </div>
+    </div>
+    <div class="split-bar" id="split-bar" role="img" aria-label="Распределение дохода"></div>
+    <div class="result-rows" id="split-rows" aria-live="polite"></div>
+    <p class="note">Правило 70/20/10 удобно при небольшом доходе, когда обязательные траты занимают больше половины.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="calc" id="tracker">
+    <h2>Проверка расходов</h2>
+    <p class="example-flag">В таблице пример — замените названия и суммы на свои.</p>
+    <div class="field">
+      <label for="income2">Доход в месяц, сом</label>
+      <div class="input-money"><input type="number" id="income2" min="0" step="500" value="100000" inputmode="numeric"></div>
+    </div>
+    <div class="table-box">
+      <table class="tracker-table">
+        <thead><tr><th>Статья расходов</th><th>Категория</th><th class="num">Сумма, сом</th><th><span class="sr" aria-label="Удалить"></span></th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <div><button type="button" class="btn" id="add-row">+ Добавить расход</button></div>
+
+    <div class="summary" aria-live="polite">
+      <div class="sum-card"><span class="label">Расходы всего</span><span class="big-num" id="total"></span></div>
+      <div class="sum-card"><span class="label">Остаток</span><span class="big-num" id="rest"></span></div>
+      <div class="sum-card"><span class="label">Итог</span><span id="status"></span></div>
+    </div>
+
+    <div class="cat-check">
+      <h3>Сравнение с правилом 50/30/20</h3>
+      <div id="cat-lines"></div>
+      <p class="note">Чёрная отметка на полоске — рекомендуемая доля по правилу 50/30/20.</p>
+    </div>
+  </div>
+</section>
+</div></main>
+<footer class="site-foot"><div class="wrap">
+  <span>Автор: <strong>ZHYLDYZ</strong></span>
+  <span>Учебный проект «Как вести личный бюджет» · 2026</span>
+</div></footer>
+<script src="calc.js"></script>
+</body>
+</html>
